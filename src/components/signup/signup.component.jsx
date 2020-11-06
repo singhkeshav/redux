@@ -21,7 +21,7 @@ handleSubmit = async event => {
     event.preventDefault();
     const {displayName,email,password,confirmPassword}  =  this.state;
 
-    if(password != confirmPassword){
+    if(password !== confirmPassword){
         alert('password and confirm password not matched.');
         return;
     } 
@@ -53,6 +53,7 @@ handleChange = e => {
            <h2 className="title">I do not have a account</h2>    
            <span>Sign up with your email and password</span>  
            <form className="sign-up-form" onSubmit={this.handleSubmit}>
+
               <FormInput
                 type="text"
                 name="displayName"
@@ -61,6 +62,7 @@ handleChange = e => {
                 label="Dispaly Name"
                 required
               ></FormInput>
+
                 <FormInput
                 type="email"
                 name="email"

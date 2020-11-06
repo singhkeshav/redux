@@ -3,13 +3,13 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 var firebaseConfig = {
-    apiKey: "*********-h7YGLRvliXY",
-    authDomain: "**********.firebaseapp.com",
+    apiKey: "AIzaSyABcEa0DiDZMdifsSE4Hgr-h7YGLRvliXY",
+    authDomain: "system-test-77aa9.firebaseapp.com",
     databaseURL: "https://system-test-77aa9.firebaseio.com",
-    projectId: "*****-77aa9",
-    storageBucket: "*******.appspot.com",
-    messagingSenderId: "*****",
-    appId: "*****cd88aaf56b15d7f8aa30"
+    projectId: "system-test-77aa9",
+    storageBucket: "system-test-77aa9.appspot.com",
+    messagingSenderId: "223204323729",
+    appId: "1:223204323729:web:bdcd88aaf56b15d7f8aa30"
   };
 
    // Initialize Firebase

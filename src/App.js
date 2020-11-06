@@ -5,16 +5,20 @@ import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import  Signing  from './pages/signing/signing.component';
-import { auth, createUserProfileDocument} from './firebase/firebase.util'
+import { auth, createUserProfileDocument} from './firebase/firebase.util';
+//>> App 
 class App extends React.Component {
+  subcriptions = null;
+
   constructor(){
     super();
     this.state = {
       currentUser: null
     }
   }
-  subcriptions = null
+ 
   componentDidMount(){
+    //Subcription ...
     this.subcriptions =  auth.onAuthStateChanged(async user=>{
       if(user){
         const userExists = await createUserProfileDocument(user);
@@ -25,7 +29,6 @@ class App extends React.Component {
               ...snapShort.data()
             }
           },()=>console.error(this.state.currentUser));
-          
         });
       }
       this.setState({
@@ -35,9 +38,10 @@ class App extends React.Component {
   }
 
   componentWillUnmount(){
-    console.log('removed server')
+    //>> Un Subscribe
     this.subcriptions();
   }
+  //Render...
   render(){
     return (
       <div>
