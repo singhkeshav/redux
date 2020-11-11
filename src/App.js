@@ -8,6 +8,7 @@ import  Signing  from './pages/signing/signing.component';
 import { auth, createUserProfileDocument} from './firebase/firebase.util';
 import {connect} from 'react-redux';
 import { addUser} from '../src/redux/user/user.actions';
+import Checkout from './pages/checkout/checkout.component'
 //>> App 
 class App extends React.Component {
   subcriptions = null;
@@ -38,6 +39,7 @@ class App extends React.Component {
           <Route exact path="/" component={HomePage} />
           <Route  path="/shop" component={ShopPage} />
           <Route  path="/signin" component={Signing} />
+          <Route  exact path="/checkout" component={Checkout} />
         </Switch>
       
       </div>
