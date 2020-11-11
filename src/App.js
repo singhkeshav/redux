@@ -6,34 +6,22 @@ import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import  Signing  from './pages/signing/signing.component';
 import { auth, createUserProfileDocument} from './firebase/firebase.util';
+import {connect} from 'react-redux';
+import { addUser} from '../src/redux/user/user.actions';
 //>> App 
 class App extends React.Component {
   subcriptions = null;
-
-  constructor(){
-    super();
-    this.state = {
-      currentUser: null
-    }
-  }
- 
   componentDidMount(){
     //Subcription ...
+    const { addUser } = this.props;
     this.subcriptions =  auth.onAuthStateChanged(async user=>{
       if(user){
         const userExists = await createUserProfileDocument(user);
         userExists.onSnapshot(snapShort=>{
-          this.setState({
-            currentUser: {
-              id: snapShort.id,
-              ...snapShort.data()
-            }
-          },()=>console.error(this.state.currentUser));
+          addUser({id: snapShort.id,...snapShort.data()});
         });
       }
-      this.setState({
-        currentUser: user
-      });
+      addUser(user);
     });
   }
 
@@ -45,7 +33,7 @@ class App extends React.Component {
   render(){
     return (
       <div>
-        <Header currentUser={this.state.currentUser}/>
+        <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route  path="/shop" component={ShopPage} />
@@ -58,4 +46,9 @@ class App extends React.Component {
  
 }
 
-export default App;
+
+const propsToState = (dispatch)=> ({
+  addUser: user => dispatch(addUser(user))
+})
+
+export default connect(null, propsToState) (App);
