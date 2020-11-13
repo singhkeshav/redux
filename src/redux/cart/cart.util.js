@@ -20,7 +20,6 @@ export const removeCartItem = (cartItems, id) => cartItems.filter(row => row.id 
 //substractCartItemUtils
 export const substractCartItemUtils = (cartItem, subItem) =>{
  const existCartItem =  cartItem.find(row=> row.id === subItem.id);
- debugger
  if(existCartItem && existCartItem.quanity === 1){
     return cartItem.filter(row=> row.id!==subItem.id);
  }
